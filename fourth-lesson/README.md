@@ -79,15 +79,6 @@ glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 ### 3)Вершинный шейдер
 **Вершинный шейдер** - один из програмируемых шейдеров. Шейдеры создаются на Си-подобном языке GLSL. Код шейдера можно задать как простую строку, затем создать объект шейдера и скомпилировать его. Затем из отдельных шейдеров линкуется шейдерная программа.
 
-```cpp
-#version 330 core
-
-layout (location = 0) in vec3 position;
-
-void main()
-{
-    gl_Position = vec4(position.x, position.y, position.z, 1.0);
-}
 ``````cpp
 //Установка версии шейдера
 //Указание на то, что мы используем Core-profile
