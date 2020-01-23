@@ -109,3 +109,51 @@ const GLchar* vertexShaderSource = "#version 330 core\n"
 						"gl_Position = vec4(position.x, position.y, position.z, 1.0);\n"
 						 "}\0";
 ```
+
+Скомпилируем созданный шейдер, для этого нужно проделать следующие шаги:
+1. Создать объект шейдера.
+2. Привязать код шейдера к объекту шейдера
+1. Скомпилировать его
+
+```cpp
+	//Создание объекта шейдера
+	GLuint vertexShader;
+	//glCreateShader принимает один аргумент - тип шейдера
+	//glCreateShader возвращает идентификатор объекта
+	vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	//Привязываем исходный код к объекту шейдера
+	//Аргументы:
+	//1)Объект шейдера
+	//2)Количество строк исходного кода шейдера
+	//3)Исходный код шейдера
+	//Последний аргумент нам не нужен, будет задан как NULL
+	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+	//Компиляция шейдера
+	glCompileShader(vertexShader);
+```
+
+### 4)Фрагментный шейдер
+**Фрагментный шейдер** — это второй и последний шейдер, который нам понадобится, чтобы отрисовать треугольник. Фрагментный шейдер занимается вычислением цветов пикселей. Во имя простоты наш фрагментный шейдер будет выводить только оранжевый цвет.
+
+```cpp
+//Задаем версия и Core-profile режим
+#version 330 core
+
+//Указываем выходную переменную с помощью ключевого слова out
+out vec4 color;
+
+void main()
+{
+    //Устанавливаем значение переменной color в кодировке RGBA
+	color = vec4(1.0f, 0.5f, 0.2f, 1.0f);
+}
+```
+
+```cpp
+	//Cборка шейдера происходит аналогично
+	GLuint fragmentShader;
+	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
+	glCompileShader(fragmentShader);
+```
+
