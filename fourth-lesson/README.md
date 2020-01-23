@@ -58,13 +58,13 @@ GLfloat vertices[] = {
 3. Передача
 
 ```cpp
-	//vertex buffer objects
-	//Будет хранить вершины нашего треугольника
-	GLuint VBO;
-	//Создание буфера
-	glGenBuffers(1, &VBO);
-	//Указание о том, что буфер имеет тип VBO
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+//vertex buffer objects
+//Будет хранить вершины нашего треугольника
+GLuint VBO;
+//Создание буфера
+glGenBuffers(1, &VBO);
+//Указание о том, что буфер имеет тип VBO
+glBindBuffer(GL_ARRAY_BUFFER, VBO);
 ```
 Скопируем данные из выше описанного массива vertices в VBO
 ```cpp
@@ -116,20 +116,20 @@ const GLchar* vertexShaderSource = "#version 330 core\n"
 1. Скомпилировать его
 
 ```cpp
-	//Создание объекта шейдера
-	GLuint vertexShader;
-	//glCreateShader принимает один аргумент - тип шейдера
-	//glCreateShader возвращает идентификатор объекта
-	vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	//Привязываем исходный код к объекту шейдера
-	//Аргументы:
-	//1)Объект шейдера
-	//2)Количество строк исходного кода шейдера
-	//3)Исходный код шейдера
-	//Последний аргумент нам не нужен, будет задан как NULL
-	glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
-	//Компиляция шейдера
-	glCompileShader(vertexShader);
+//Создание объекта шейдера
+GLuint vertexShader;
+//glCreateShader принимает один аргумент - тип шейдера
+//glCreateShader возвращает идентификатор объекта
+vertexShader = glCreateShader(GL_VERTEX_SHADER);
+//Привязываем исходный код к объекту шейдера
+//Аргументы:
+//1)Объект шейдера
+//2)Количество строк исходного кода шейдера
+//3)Исходный код шейдера
+//Последний аргумент нам не нужен, будет задан как NULL
+glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
+//Компиляция шейдера
+glCompileShader(vertexShader);
 ```
 
 ### 4)Фрагментный шейдер
@@ -161,16 +161,15 @@ glCompileShader(fragmentShader);
 **Шейдерная программа** — это объект, являющийся финальным результатом комбинации нескольких шейдеров. Для того, чтобы использовать собранные шейдеры их требуется соединить в объект шейдерной программы, а затем активировать эту программу при отрисовке объектов, и эта программа будет использоваться при вызове команд отрисовки.
 При соединении шейдеров в программу, выходные значения одного шейдера сопоставляются с входными значениями другого шейдера.
 ```cpp
-	//Создаем шейдерную программу
-	GLuint shaderProgram;
-	//glCreateProgram - возвращает идентификатор программы
-	shaderProgram = glCreateProgram();
-
-	//Присоединяем шейдеры к программе
-	glAttachShader(shaderProgram, vertexShader);
-	glAttachShader(shaderProgram, fragmentShader);
-	//Связываем их
-	glLinkProgram(shaderProgram);
+//Создаем шейдерную программу
+GLuint shaderProgram;
+//glCreateProgram - возвращает идентификатор программы
+shaderProgram = glCreateProgram();
+//Присоединяем шейдеры к программе
+glAttachShader(shaderProgram, vertexShader);
+glAttachShader(shaderProgram, fragmentShader);
+//Связываем их
+glLinkProgram(shaderProgram);
 ```
 
 Для использования программы, нужно вызвать:
@@ -187,7 +186,6 @@ glDeleteShader(fragmentShader);
 Вершинный шейдер позволяет нам указать любые данные в каждый атрибут вершины, но это не значит, что нам придется указывать какой элемент данных относится к какому атрибуту. Это означает, что мы должны сообщить как OpenGL должен интерпретировать вершинные данные перед отрисовкой.
 Вершинный буфер:
 ![](https://hsto.org/files/f8a/ac4/1b5/f8aac41b555b4487a68c8a71dfcf3c55.png)
-
 Зная эти особенности мы можем сообщить OpenGL как он должен интерпретировать вершинные данные. Делается это с помощью функции glVertexAttribPointer:
 ```cpp
 //Первый аргумент указывает, какой элемент шейдера мы хотим настроить
@@ -218,6 +216,7 @@ glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0)
 glUseProgram(shaderProgram);
 //Теперь уже отрисовываем объект
 someOpenGlFunctionThatDrawsOutTriangle();
+```
 
 ```
 ### 7)Vertex Array Object
