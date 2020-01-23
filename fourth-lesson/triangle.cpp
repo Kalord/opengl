@@ -16,11 +16,11 @@ const GLuint WIDTH = 800, HEIGHT = 600;
 
 //Вершинный шейдер
 const GLchar* vertexShaderSource = "#version 330 core\n"
-								   "layout (location = 0) in vec3 position;\n"
-								   "void main()\n"
-								   "{\n"
-										"gl_Position = vec4(position.x, position.y, position.z, 1.0);\n"
-								   "}\0";
+				   "layout (location = 0) in vec3 position;\n"
+				   "void main()\n"
+				   "{\n"
+					"gl_Position = vec4(position.x, position.y, position.z, 1.0);\n"
+				   "}\0";
 
 //Фргаментный шейдер
 const GLchar* fragmentShaderSource = "#version 330 core\n"
@@ -35,7 +35,7 @@ int main()
 	//Иницилазция GLFW
 	glfwInit();
 	
-    //Настройка GLFW
+    	//Настройка GLFW
 	glfwWindowHint(GLFW_SAMPLES, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -57,7 +57,7 @@ int main()
 	//Получение размера экрана
 	int w, h;
 	glfwGetFramebufferSize(window, &w, &h);
-    //Создание viewport
+    	//Создание viewport
 	glViewport(0, 0, w, h);
 
 	//Cоздание вершинного шейдера
@@ -76,20 +76,20 @@ int main()
 	glAttachShader(shaderProgram, fragmentShader);
 	glLinkProgram(shaderProgram);
 
-    //Удаление шейдеров
+    	//Удаление шейдеров
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
 
-    //Вершины треугольника
-    GLfloat vertices[] = {
+    	//Вершины треугольника
+    	GLfloat vertices[] = {
 	    0.5f,  0.5f,
 	    0.5f, -0.5f,
 	    -0.5f,  0.5f,
 	};
 
-    //Создание vertex buffer objects
-    //Создание vertex array objects
+    	//Создание vertex buffer objects
+    	//Создание vertex array objects
 	GLuint VBO, VAO;
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
@@ -107,21 +107,21 @@ int main()
 	{
 		glfwPollEvents();
 
-        //Задание цвета фона
+        	//Задание цвета фона
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-        //Отрисовка
-        glUseProgram(shaderProgram);
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
-        glBindVertexArray(0);
+        	//Отрисовка
+        	glUseProgram(shaderProgram);
+        	glBindVertexArray(VAO);
+        	glDrawArrays(GL_TRIANGLES, 0, 3);
+        	glBindVertexArray(0);
 
 		//Обмен буферов
 		glfwSwapBuffers(window);
 	}
     
-    //Освобождение ресурсов
+    	//Освобождение ресурсов
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 
