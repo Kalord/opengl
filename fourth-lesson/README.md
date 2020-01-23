@@ -150,10 +150,35 @@ void main()
 ```
 
 ```cpp
-	//Cборка шейдера происходит аналогично
-	GLuint fragmentShader;
-	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
-	glCompileShader(fragmentShader);
+//Cборка шейдера происходит аналогично
+GLuint fragmentShader;
+fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+glShaderSource(fragmentShader, 1, &fragmentShaderSource, NULL);
+glCompileShader(fragmentShader);
 ```
 
+### 5)Шейдерная программа
+**Шейдерная программа** — это объект, являющийся финальным результатом комбинации нескольких шейдеров. Для того, чтобы использовать собранные шейдеры их требуется соединить в объект шейдерной программы, а затем активировать эту программу при отрисовке объектов, и эта программа будет использоваться при вызове команд отрисовки.
+При соединении шейдеров в программу, выходные значения одного шейдера сопоставляются с входными значениями другого шейдера.
+```cpp
+	//Создаем шейдерную программу
+	GLuint shaderProgram;
+	//glCreateProgram - возвращает идентификатор программы
+	shaderProgram = glCreateProgram();
+
+	//Присоединяем шейдеры к программе
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragmentShader);
+	//Связываем их
+	glLinkProgram(shaderProgram);
+```
+
+Для использования программы, нужно вызвать:
+```cpp
+glUseProgram(shaderProgram);
+```
+Теперь мы можем удалить шейдеры:
+```cpp
+glDeleteShader(vertexShader);
+glDeleteShader(fragmentShader);
+```
