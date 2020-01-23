@@ -79,7 +79,7 @@ glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 ### 3)Вершинный шейдер
 **Вершинный шейдер** - один из програмируемых шейдеров. Шейдеры создаются на Си-подобном языке GLSL. Код шейдера можно задать как простую строку, затем создать объект шейдера и скомпилировать его. Затем из отдельных шейдеров линкуется шейдерная программа.
 
-``````cpp
+```cpp
 //Установка версии шейдера
 //Указание на то, что мы используем Core-profile
 #version 330 core
@@ -98,7 +98,9 @@ void main()
     gl_Position = vec4(position.x, position.y, position.z, 1.0);
 }
 ```
+
 Теперь мы можем определить глобальую переменную типа стринг на куче, и сохранить туда данный код.
+
 ```cpp
 const GLchar* vertexShaderSource = "#version 330 core\n"
 						"layout (location = 0) in vec3 position;\n"
