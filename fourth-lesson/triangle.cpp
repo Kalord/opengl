@@ -120,13 +120,7 @@ int main()
 		//Обмен буферов
 		glfwSwapBuffers(window);
 	}
-<<<<<<< HEAD
-
-    //Освобождение ресурсов
-=======
-    
-    //Освобождение ресурсов
->>>>>>> 8c94d31458999261e9788e714d3ebc685efe71e2
+	//Освобождение ресурсов
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 
