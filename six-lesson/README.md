@@ -37,3 +37,18 @@ GLFloat texture = [
 
 ![](https://habrastorage.org/files/cec/ccf/12d/cecccf12dd234b2f8525383be6eff548.png)
 
+Каждую из вышепредставленных опций можно установить на оси (s, t (и r если вы используете 3D текстуры), эквивалентны x, y и z) с помощью функций glTextParameter:
+
+```cpp
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+```
+
+Первый аргумент определяет цель к которой привязана наша текстура, мы работаем с 2D текстурой, поэтому наше значение будет GL_TEXTURE_2D. Второе значение требуется для того, чтобы сообщить OpenGL какой конкретно параметр мы хотим установить. Мы хотим настроить опцию WRAP и указать ее значение для осей S и T. В последнем аргументе передается выбранный метод wrapping. В данном случае мы используем GL_MIRRORED_REPEAT.
+
+Если бы мы выбрали GL_CLAMP_TO_BORDER, то нам бы еще пришлось указать цвет границ. Делается это fv альтернативой glTextParameter с передачей в нее GL_TEXTURE_BORDER_COLOR в качестве опции и массива из чисел с плавающей точкой в качестве цветового значения.
+
+```cpp
+float borderColor[] = { 1.0f, 1.0f, 0.0f, 1.0f };
+glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);  
+```
