@@ -222,5 +222,5 @@ Color = texture(ourTexture, TexCoord) * vec4(ourColor, 1.0f);
 ```
 
 Результат смешивания:
-![](https://habrastorage.org/files/368/abb/fb3/368abbfb374545ebaea232ad6e9c2ed3.png)
 
+![](https://habrastorage.org/files/368/abb/fb3/368abbfb374545ebaea232ad6e9c2ed3.png)
