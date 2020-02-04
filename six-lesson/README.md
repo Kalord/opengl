@@ -96,6 +96,8 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 Процесс установки описан в данном видео:
 https://www.youtube.com/watch?v=Ya_HESCH1iU
 
+Текстура https://learnopengl.com/img/textures/container.jpg
+
 Загрузка текстуры:
 ```cpp
 int width, height;
@@ -224,3 +226,4 @@ Color = texture(ourTexture, TexCoord) * vec4(ourColor, 1.0f);
 Результат смешивания:
 
 ![](https://habrastorage.org/files/368/abb/fb3/368abbfb374545ebaea232ad6e9c2ed3.png)
+
