@@ -181,4 +181,4 @@ glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
 ![](https://hsto.org/files/90f/d04/ae7/90fd04ae7d0248e7924a96f2f089feb2.png)
 
-Пример находится в этой же поддиректории в файле main.cpp
+Пример находится в этой же поддиректории в файле example/main.cpp
